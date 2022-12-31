@@ -16,17 +16,17 @@ public class systemJDBC {
     ResultSet result ; //Holds the output from SQL
     String query; //Stores the query to be executed
 
-    /*
+    
     public static void main(String[] args) throws SQLException {
         systemJDBC system = new systemJDBC();
-        boolean test = system.logIn("IvanLou", "Password1");
+        boolean test = system.logIn("Paulo", "Password3");
         if(test){
             System.out.println("User exists");
         } else{
             System.out.println("User does not exists");
         }
     }
-    */
+    
 
     /**
      * Creates and auto-fills the tables used for the Java project
@@ -122,6 +122,13 @@ public class systemJDBC {
 
     }
 
+
+    /**
+     * Verifies the log-in information
+     * @param username
+     * @param password
+     * @return
+     */
     public boolean logIn(String username, String password){
         boolean userExists = false;
         
@@ -132,7 +139,7 @@ public class systemJDBC {
             sql = dbConnect.createStatement(); //Allows SQL statement to be executed
             
             //----Confirm if the user is already registered in the system
-            query = "select exists (select * from users where Username = '"+username+"') and exists (select * from users where Password = '"+password+"');";
+            query = "select exists (select * from users where Username = '"+username+"' and Password = '"+password+"');";
             result = sql.executeQuery(query);
 
             result.next();
