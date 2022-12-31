@@ -1,5 +1,7 @@
 An implementation of the Go-Back-N (GBN) transfer protocol.
-Test server jar file and additional source code included
+Test server jar file and additional source code included.
+Some flaws with the source code implementation:
+-File transfer works properly, but depending on the input to the server and source code, the program may not terminate when finished or the program gets stuck in a loop with TimerTask's
 
 I wrote the source code implementation for the GBN protocol. 
 
