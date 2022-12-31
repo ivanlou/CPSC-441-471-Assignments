@@ -4,13 +4,13 @@ Assumptions:
 -There is only one airline
 -User can reserve multiple tickets
 -The airline will not have multiple flights during the same time
--The airline only has 5 different flights (each flight has a different departure time)
--Each flight is assigned to one gate (different flights)
+-The airline only has 5 different flights 
+-Each flight is assigned to one gate (different gates for each flight)
 
 Constraints:
 -Users must log-in to reserve a ticket
 -A seat cannot be resrved more than once in the same flight
--Each flight must have their own set of seats (One table for each flight; table contains the seats for said flight)
+-Each flight must have their own set of seats
 
 Featues:
 -User Log-in/Log-Out or Registration
