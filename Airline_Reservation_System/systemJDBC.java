@@ -16,19 +16,26 @@ public class systemJDBC {
     ResultSet result ; //Holds the output from SQL
     String query; //Stores the query to be executed
 
+    int tickettNum = 0; //By default, first ticket has a number of 0
+
     
     public static void main(String[] args) throws SQLException {
+        //-----Test Code------
+        /* 
         systemJDBC system = new systemJDBC();
-        boolean test = system.logIn("Paulo", "Password3");
+        boolean test = system.logInCheck("Paulo", "Password2");
         if(test){
             System.out.println("User exists");
         } else{
             System.out.println("User does not exists");
         }
+        */
+        
     }
     
 
     /**
+     * Default Constructor
      * Creates and auto-fills the tables used for the Java project
      * @throws SQLException
      */
@@ -40,7 +47,7 @@ public class systemJDBC {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver"); //Ensures that the mysql connector is working
             String dbURL = "jdbc:mysql://localhost:3306/airline_ticket_reservation";
-            Connection dbConnect = DriverManager.getConnection(dbURL, "root", "SpartanKiller747!"); //bridge between MySQL and Java
+            Connection dbConnect = DriverManager.getConnection(dbURL, "root", "SpartanKiller747"); //bridge between MySQL and Java
             sql = dbConnect.createStatement(); //Allows SQL statement to be executed
             
 
@@ -110,32 +117,85 @@ public class systemJDBC {
         
     }
 
-    public void createTicket(int ticketNum, String departureTime, String gateNumber, String seatNumber, String ticketHolder, int flightNum){
+    
+    /**
+     * Version of the constructor; Pass any integer to the constructor to indicate database tables have been initialized
+     * @throws SQLException
+     */
+    public systemJDBC(int random) {
+        //Do nothing
+    }
+
+    public void createTicket(){
 
     }
 
-    public void register(String fullName, String username, String password){
+    public boolean register(String fullName, String username, String password){
+        boolean usernameDoesNotExists = true;
+        
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver"); //Ensures that the mysql connector is working
+            String dbURL = "jdbc:mysql://localhost:3306/airline_ticket_reservation";
+            Connection dbConnect = DriverManager.getConnection(dbURL, "root", "SpartanKiller747"); //bridge between MySQL and Java
+            sql = dbConnect.createStatement(); //Allows SQL statement to be executed
+            
+            //----Confirm if the user is already registered in the system
+            query = "select exists (select * from users where Username = '"+username+"');";
+            result = sql.executeQuery(query);
+
+            result.next();
+            usernameDoesNotExists = result.getBoolean(1);
+            
+            if(usernameDoesNotExists){
+                //System.out.println("Username already exists");
+                return false;
+            } else{
+                //System.out.println("Username is unique");
+                usernameDoesNotExists = true;
+                query = "INSERT into users (FullName, Username, Password) values "+
+                        "('"+fullName+"', '"+username+"', '"+password+"');";
+                sql.executeUpdate(query);
+            }
+
+            sql.close();
+
+        } catch (ClassNotFoundException e){
+            //Fires if JAR does not work right
+            System.out.println("JAR file not right");
+            e.printStackTrace();
+        }  catch (SQLException ex){
+            System.out.println("Something wrong with MySQL");
+            ex.printStackTrace();
+        }
+
+        return usernameDoesNotExists;
+    }
+
+    public void bookFlight(int flightNum){
 
     }
 
-    public void bookFlight(int flightNum, String departureTime){
+    public void cancelBooking(){
 
     }
 
+    public void displayBookings(){
+
+    }
 
     /**
      * Verifies the log-in information
-     * @param username
-     * @param password
+     * @param username - username used by the suer
+     * @param password - password for the user's account
      * @return
      */
-    public boolean logIn(String username, String password){
+    public boolean logInCheck(String username, String password){
         boolean userExists = false;
         
         try{
             Class.forName("com.mysql.cj.jdbc.Driver"); //Ensures that the mysql connector is working
             String dbURL = "jdbc:mysql://localhost:3306/airline_ticket_reservation";
-            Connection dbConnect = DriverManager.getConnection(dbURL, "root", "SpartanKiller747!"); //bridge between MySQL and Java
+            Connection dbConnect = DriverManager.getConnection(dbURL, "root", "SpartanKiller747"); //bridge between MySQL and Java
             sql = dbConnect.createStatement(); //Allows SQL statement to be executed
             
             //----Confirm if the user is already registered in the system
@@ -143,11 +203,7 @@ public class systemJDBC {
             result = sql.executeQuery(query);
 
             result.next();
-            userExists = result.getBoolean(1);
-            
-            if(userExists){
-                userExists = true;
-            }
+            userExists = result.getBoolean(1);           
 
             sql.close();
 
