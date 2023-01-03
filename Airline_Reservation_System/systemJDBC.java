@@ -47,7 +47,7 @@ public class systemJDBC {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver"); //Ensures that the mysql connector is working
             String dbURL = "jdbc:mysql://localhost:3306/airline_ticket_reservation";
-            Connection dbConnect = DriverManager.getConnection(dbURL, "root", "SpartanKiller747"); //bridge between MySQL and Java
+            Connection dbConnect = DriverManager.getConnection(dbURL, [username], [password]); //bridge between MySQL and Java; replace [username] and [password] with your own
             sql = dbConnect.createStatement(); //Allows SQL statement to be executed
             
 
