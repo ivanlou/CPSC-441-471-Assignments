@@ -1,0 +1,193 @@
+body, html {
+    height:100%;
+}
+
+html {
+    background-image: url("../img/background.jpg");
+    height:100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333; 
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: red;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: red;
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
+
+#log-in-out{
+    position:relative;
+    left:840px;
+}
+
+#welcome-text{
+    position:relative;
+    left:1100px;
+    bottom:48px;
+    z-index:9999;
+    float: left;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;  
+}
+
+.img {
+  width:100%;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgb(0, 0, 0);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  max-height: 400px;
+  transition: all .2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.09);
+}
+
+.price {
+  color: black;
+  font-size: 22px;
+}
+
+.description {
+  text-align: center;
+  padding-left: 2px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+
+#catalogue {
+  position:relative;
+  display:grid;
+  grid-template: 500px / auto auto auto;
+  top:50px;
+  right:0px;
+}
+
+.department-text{
+  position:relative;
+  top:50px;
+  right:150px;
+}
+
+.img2 {
+  object-fit: cover;
+  width:230px;
+  height:230px;
+}
+
+.dropbtn {
+  background-color: #333;
+  color: white;
+  padding: 16px;
+  font-size: 17px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  left:25px;
+  bottom:5px;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  min-width: 300px;
+  display: block;
+  font-size: 26px;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: red;}

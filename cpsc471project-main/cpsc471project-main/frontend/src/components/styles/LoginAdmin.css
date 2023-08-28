@@ -1,0 +1,58 @@
+.login-box{
+    position:relative;
+    left:500px;
+    top:100px;
+    background-color:#D9D9D9;
+    width:300px;
+    height:320px;
+}
+
+.login-header2 h1{
+    position:relative;
+    left:52px;
+}
+
+.password-field{
+    position:relative;
+    top:20px;
+    left:10px;
+}
+
+#password{
+    position: relative;
+    left:4px;
+}
+
+.username-field{
+    position:relative;
+    left:10px;
+}
+
+.email-field{
+    position:relative;
+    top:40px;
+    left:37px;
+}
+
+label[for='email']{
+    position:relative;
+    right:6px;
+}
+
+#login-button{
+    position: relative;
+    top:75px;
+    left:120px;
+}
+
+.create-link{
+    color:blue;
+    position:relative;
+    top:10px;
+}
+
+.help-text{
+    position:relative;
+    top:85px;
+    left:76px;
+}
